@@ -35,38 +35,33 @@ function ServiceList() {
   }
 
   return (
-    <div className='wrapper'>
+    <>
       <ServiceAdd />
-      <ListGroup>
-        {items.map((o) => (
-          <>
-            <ListGroup.Item key={o.id}>
-              {o.name} {o.price}
-              <Link to={`/services/${o.id}`}>
-                <Button variant='danger' size='sm'>
-                  Edit
+
+      <div className='wrapper'>
+        <ListGroup>
+          {items.map((o) => (
+            <>
+              <ListGroup.Item key={o.id}>
+                {o.name} {o.price}
+                <Link to={`/services/${o.id}`}>
+                  <Button variant='danger' size='sm'>
+                    Edit
+                  </Button>
+                </Link>
+                <Button
+                  variant='danger'
+                  size='sm'
+                  onClick={() => handleRemove(o.id)}
+                >
+                  ✕
                 </Button>
-              </Link>
-              <Button
-                variant='danger'
-                size='sm'
-                onClick={() => handleRemove(o.id)}
-              >
-                ✕
-              </Button>
-            </ListGroup.Item>
-          </>
-        ))}
-      </ListGroup>
-    </div>
-    // {/* <ul>
-    //   {items.map((o) => (
-    //     <li key={o.id}>
-    //       {o.name} {o.price}
-    //       <button onClick={() => handleRemove(o.id)}>✕</button>
-    //     </li>
-    //   ))}
-    // </ul> */}
+              </ListGroup.Item>
+            </>
+          ))}
+        </ListGroup>
+      </div>
+    </>
   );
 }
 

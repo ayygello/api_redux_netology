@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './ServiceEdit.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, Navigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import {
   changeEditableServiceField,
   fetchEditableService,
@@ -13,6 +13,7 @@ const ServiceEdit = () => {
   const { item, loading, error } = useSelector((state) => state.serviceEdit);
   const dispatch = useDispatch();
   const { serviceId } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchEditableService(dispatch, serviceId);
@@ -27,7 +28,7 @@ const ServiceEdit = () => {
     evt.preventDefault();
     addEditedService(dispatch, item.name, item.price, item.content, item.id);
     if (!error) {
-      <Navigate to={'/'} replace />;
+      navigate('/', { replace: true });
     }
   };
 
@@ -49,7 +50,6 @@ const ServiceEdit = () => {
 
   return (
     <div className='wrapper'>
-      {/* {items.name} {items.content} */}
       <Form>
         <Form.Group className='mb-3' controlId='formName'>
           <Form.Label>Название</Form.Label>

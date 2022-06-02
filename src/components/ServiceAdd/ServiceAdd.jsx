@@ -1,9 +1,10 @@
 import React from 'react';
+import { Button, FormControl, InputGroup } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeServiceField, addService } from '../../actions/actionCreators';
 
 function ServiceAdd() {
-  const { item, loading, error } = useSelector((state) => state.serviceAdd);
+  const { item, loading } = useSelector((state) => state.serviceAdd);
   const dispatch = useDispatch();
 
   const handleChange = (evt) => {
@@ -17,14 +18,27 @@ function ServiceAdd() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input name='name' onChange={handleChange} value={item.name} />
-      <input name='price' onChange={handleChange} value={item.price} />
-      <button type='submit' disabled={loading}>
-        Save
-      </button>
-      {error && <p>Something went wrong try again</p>}
-    </form>
+    <InputGroup className='mb-3'>
+      <FormControl
+        name='name'
+        onChange={handleChange}
+        value={item.name}
+        aria-describedby='basic-addon2'
+      />
+      <FormControl
+        name='price'
+        onChange={handleChange}
+        value={item.price}
+        aria-describedby='basic-addon2'
+      />
+      <Button
+        variant='outline-secondary'
+        disabled={loading}
+        onClick={handleSubmit}
+      >
+        Добавить
+      </Button>
+    </InputGroup>
   );
 }
 

@@ -36,14 +36,6 @@ export default function serviceListReducer(state = initialState, action) {
         loading: false,
         error: null,
       };
-    // case REMOVE_SERVICE:
-    //   const { id } = action.payload;
-    //   return {
-    //     ...state,
-    //     items: state.items.filter((o) => o.id !== id),
-    //   };
-    // case REMOVE_SERVICE_REQUEST:
-    //   const { id } = action.payload;
     case REMOVE_SERVICE_REQUEST:
       return {
         loading: true,

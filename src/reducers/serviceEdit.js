@@ -3,6 +3,7 @@ import {
   FETCH_EDITABLE_SERVICE_FAILURE,
   FETCH_EDITABLE_SERVICE_SUCCESS,
   CHANGE_EDITABLE_SERVICE_FIELD,
+  ADD_EDITED_SERVICE_SUCCESS,
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -43,6 +44,11 @@ const serviceEditReducer = (state = initialState, action) => {
           ...newItem,
           [name]: value,
         },
+      };
+    case ADD_EDITED_SERVICE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
       };
     default:
       return state;

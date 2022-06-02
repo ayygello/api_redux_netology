@@ -201,7 +201,7 @@ export const addEditedService = async (dispatch, name, price, content, id) => {
     if (!response.ok) {
       throw new Error(response.statusText);
     }
-    dispatch(fetchEditableServiceSuccess());
+    dispatch(addEditedServiceSuccess());
   } catch (e) {
     dispatch(fetchEditableServiceFailure(e.message));
   }
